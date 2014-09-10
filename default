@@ -1,0 +1,46 @@
+server {
+	root /usr/share/nginx/owncloud/;
+	index index.html index.htm;
+	server_name localhost;
+        access_log /var/log/nginx/owncloud.access.log;
+        error_log /var/log/nginx/owncloud.error.log;
+
+
+        client_max_body_size 10G; # set max upload size
+        fastcgi_buffers 64 4K;
+
+        error_page 403 = /core/templates/403.php;
+        error_page 404 = /core/templates/404.php;
+
+        location = /robots.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+        }
+
+        location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
+                deny all;
+        }
+        location ~ ^(.+?\.php)(/.*)?$ {
+                try_files $1 = 404;
+
+                include fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$1;
+                fastcgi_param PATH_INFO $2;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+
+        location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+                expires 30d;
+                access_log off;
+        }
+	location / {
+		try_files $uri $uri/ /index.html /index.php;
+	}
+	location /doc/ {
+		alias /usr/share/doc/;
+		autoindex on;
+		allow 127.0.0.1;
+		allow ::1;
+	}
+}
