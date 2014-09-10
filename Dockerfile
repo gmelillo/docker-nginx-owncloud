@@ -1,4 +1,4 @@
-FROM tutum/ubutnu:trusty
+FROM tutum/ubutnu:14.04
 MAINTAINER Gabriel Melillo "gabriel@melillo.me"
 
 RUN apt-get update && apt-get -y upgrade
