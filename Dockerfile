@@ -1,6 +1,8 @@
 FROM tutum/ubuntu:trusty
 MAINTAINER Gabriel Melillo "gabriel@melillo.me"
 
+ADD run-ssh.sh /usr/local/bin/
+
 RUN apt-get update && apt-get -y upgrade
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
@@ -27,5 +29,5 @@ RUN rm -rf /usr/share/nginx/owncloud-latest.zip
 
 EXPOSE 80
 
-CMD service php5-fpm start && service mysql start && nginx 
+CMD /usr/local/bin/run-ssh.sh && service php5-fpm start && service mysql start && nginx 
 
