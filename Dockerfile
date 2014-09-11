@@ -2,7 +2,6 @@ FROM tutum/ubuntu:trusty
 MAINTAINER Gabriel Melillo "gabriel@melillo.me"
 
 ADD run-services.sh /usr/local/bin/
-ADD remove_trusted_domains.php /usr/local/bin/
 
 RUN apt-get update && apt-get -y upgrade
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
