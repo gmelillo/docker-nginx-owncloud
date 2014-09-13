@@ -4,5 +4,6 @@ if [ ! -f /.root_pw_set ]; then
 fi
 service php5-fpm start 
 service mysql start 
+echp $?
 service nginx start
 exec /usr/sbin/sshd -D

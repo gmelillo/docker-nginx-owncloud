@@ -18,7 +18,6 @@ RUN /usr/bin/mysqld_safe & \
     mysql < /usr/local/src/owncloud.sql
 
 # Configuring nginx+php5-fpm
-#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD www.conf /etc/php5/fpm/pool.d/
 ADD default /etc/nginx/sites-available/
 
