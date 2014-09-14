@@ -12,11 +12,6 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 ADD owncloud.sql /usr/local/src/
 RUN apt-get -y install nginx-full php5-fpm mysql-server php5-mysql php5-gd php5-curl php5-cli wget unzip
 
-# Configuring database
-RUN /usr/bin/mysqld_safe & \
-    sleep 10s && \
-    mysql < /usr/local/src/owncloud.sql
-
 # Configuring nginx+php5-fpm
 ADD www.conf /etc/php5/fpm/pool.d/
 ADD default /etc/nginx/sites-available/
@@ -33,7 +28,6 @@ RUN chown www-data:www-data -R /usr/share/nginx/owncloud && \
 RUN apt-get -y remove wget unzip && \
     apt-get autoremove -y && \
     rm -rf /usr/share/nginx/owncloud-latest.zip && \
-    rm -rf /usr/local/src/owncloud.sql
 
 VOLUME ['/oc_data', '/var/lib/mysql']
 
