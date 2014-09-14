@@ -4,9 +4,11 @@ if [ ! -f /.root_pw_set ]; then
 fi
 
 if [ -z "$(ls -A /var/lib/mysql)" -a "${1%_safe}" = 'mysqld' ]; then
-	/usr/bin/mysqld_safe & \
-	sleep 10s && \
-	mysql < /usr/local/src/owncloud.sql
+    rm -rf /var/lib/mysql/*
+    chown -R mysql /var/lib/mysql && chgrp -R mysql /var/lib/mysql
+    mysql_install_db
+    /usr/bin/mysqld_safe
+    /usr/local/bin/mysql_secure.sh '0KmF5zArK5'
 	mysqladmin shutdown -u root -p"0KmF5zArK5"
 fi
 

@@ -15,7 +15,7 @@ The first administrative user is **ocadmin** with password `stachaswac`
 
 ###TODO
 
-* Make database work if external storage is mounted on `/var/lib/mysql`
+* ~~Make database work if external storage is mounted on `/var/lib/mysql`~~
 * Support for external database
 * Autobackup in sql format scheduled on exported datastore to make easy container backup
 * Make HTTPS available on image.

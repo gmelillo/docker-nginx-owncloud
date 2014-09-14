@@ -2,6 +2,7 @@ FROM tutum/ubuntu:trusty
 MAINTAINER Gabriel Melillo "gabriel@melillo.me"
 
 ADD run-services.sh /usr/local/bin/
+ADD mysql_secure.sh /usr/local/bin/
 
 RUN apt-get update && apt-get -y upgrade
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
@@ -27,7 +28,7 @@ RUN chown www-data:www-data -R /usr/share/nginx/owncloud && \
 # Cleanup
 RUN apt-get -y remove wget unzip && \
     apt-get autoremove -y && \
-    rm -rf /usr/share/nginx/owncloud-latest.zip && \
+    rm -rf /usr/share/nginx/owncloud-latest.zip
 
 VOLUME ['/oc_data', '/var/lib/mysql']
 
