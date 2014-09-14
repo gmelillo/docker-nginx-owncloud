@@ -2,7 +2,7 @@
 $AUTOCONFIG = array(
   "dbtype"        => "mysql",
   "dbname"        => "owncloud",
-  "dbuser"        => "owncloud",
+  "dbuser"        => "root",
   "dbpass"        => "0KmF5zArK5",
   "dbhost"        => "localhost",
   "dbtableprefix" => "",
