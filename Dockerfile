@@ -10,8 +10,16 @@ RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 RUN echo "Europe/Berlin" > /etc/timezone
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-ADD owncloud.sql /usr/local/src/
 RUN apt-get -y install nginx-full php5-fpm mysql-server php5-mysql php5-gd php5-curl php5-cli wget unzip
+
+# Configuring mysql
+RUN rm -rf /var/lib/mysql/* && \
+    chmod +x /usr/local/bin/*.sh && \
+    chown -R mysql /var/lib/mysql && chgrp -R mysql /var/lib/mysql && \
+    mysql_install_db >> /dev/null && \
+    service mysql start >> /dev/null && \
+    /usr/local/bin/mysql_secure.sh 0KmF5zArK5 >> /dev/null && \
+	mysqladmin -uroot -p0KmF5zArK5 shutdown
 
 # Configuring nginx+php5-fpm
 ADD www.conf /etc/php5/fpm/pool.d/
