@@ -11,7 +11,7 @@ if [ ! -d "/var/lib/mysql/mysql/" ]; then
     mysql_install_db >> /dev/null
     service mysql start >> /dev/null
     /usr/local/bin/mysql_secure.sh 0KmF5zArK5 >> /dev/null
-	mysqladmin -uroot -p0KmF5zArK5 shutdown
+    mysqladmin -uroot -p0KmF5zArK5 shutdown
 fi
 
 service php5-fpm start >> /dev/null
