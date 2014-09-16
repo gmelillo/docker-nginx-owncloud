@@ -1,6 +1,5 @@
 #!/bin/bash
 chmod +x /usr/local/bin/*.sh
-PURGE_EXPECT_WHEN_DONE=1
 
 if [ ! -f /.root_pw_set ]; then
 	/set_root_pw.sh

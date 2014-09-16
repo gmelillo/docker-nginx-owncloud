@@ -21,7 +21,7 @@
 # Delete package expect when script is done
 # 0 - No; 
 # 1 - Yes.
-PURGE_EXPECT_WHEN_DONE=0
+PURGE_EXPECT_WHEN_DONE=1
  
 #
 # Check the bash shell script is being run by root
