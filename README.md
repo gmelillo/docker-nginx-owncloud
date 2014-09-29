@@ -7,6 +7,11 @@ Latest owncloud with Nginx + Mysql + PHP5-FPM
 1. Run `docker run -p 10080:80 -p 10022:22 -d gmelillo/docker-nginx-owncloud`
 2. Point your browser on `http://localhost:10080` to triggher the autoconfiguration
 
+## Exported volumes
+
+- `/oc_data`          Owncloud data.
+- `/var/lib/mysql`    MySQL filesystem.
+
 ##Users and password
 
 The root user will be generated automatically and prompted on `docker logs <instanceid>`.
