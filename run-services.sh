@@ -12,4 +12,4 @@ fi
 
 service php5-fpm start >> /dev/null
 service nginx start >> /dev/null
-mysql start >> /dev/null
+mysqld
