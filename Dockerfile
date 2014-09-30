@@ -1,4 +1,4 @@
-FROM tutum/ubuntu:trusty
+FROM ubuntu:14.04
 MAINTAINER Gabriel Melillo "gabriel@melillo.me"
 
 ADD run-services.sh /usr/local/bin/
