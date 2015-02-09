@@ -19,7 +19,7 @@ RUN rm -rf /var/lib/mysql/* && \
     mysql_install_db >> /dev/null && \
     service mysql start >> /dev/null && \
     /usr/local/bin/mysql_secure.sh 0KmF5zArK5 >> /dev/null && \
-	mysqladmin -uroot -p0KmF5zArK5 shutdown
+    mysqladmin -uroot -p0KmF5zArK5 shutdown
 
 # Configuring nginx+php5-fpm
 ADD www.conf /etc/php5/fpm/pool.d/
